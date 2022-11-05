@@ -37,6 +37,24 @@ namespace CrimeRecordDB
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
+            if (dt.Rows.Count ==1)
+            {
+                Form2 frm = new Form2();
+                this.Hide();
+                frm.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("User_name does not exist in our records!");
+            }
+        }
+
+        private void registerbutton_Click(object sender, EventArgs e)
+        {
+            Form3 frm3 = new Form3();
+            this.Hide();
+            frm3.Show();
         }
     }
 }
