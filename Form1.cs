@@ -32,6 +32,10 @@ namespace CrimeRecordDB
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Form2 frm = new Form2();
+            this.Hide();
+            frm.Show();
+            /*
             SqlConnection con = new SqlConnection("Data Source=NISAR-LENOVOYOG\\SPARTA;Initial Catalog=demo;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("select * from login where username = '" + userid.Text + "' and password = '" + password.Text + "'", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -47,7 +51,7 @@ namespace CrimeRecordDB
             else
             {
                 MessageBox.Show("User_name does not exist in our records!");
-            }
+            }*/
         }
 
         private void registerbutton_Click(object sender, EventArgs e)

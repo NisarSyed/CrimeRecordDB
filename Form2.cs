@@ -16,5 +16,29 @@ namespace CrimeRecordDB
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form4 frm = new Form4();
+            this.Close();
+            frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form5 frm = new Form5();
+            this.Close();
+            frm.Show();
+        }
     }
 }

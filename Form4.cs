@@ -23,7 +23,7 @@ namespace CrimeRecordDB
 
         void Fillcombo1()
         {
-
+            /*
             SqlConnection con = new SqlConnection("Data Source=NISAR-LENOVOYOG\\SPARTA;Initial Catalog=demo;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("select (name) from Station", con);
             SqlDataReader myreader;
@@ -42,10 +42,12 @@ namespace CrimeRecordDB
             {
 
             }
+            */
         }
 
         void Fillcombo2()
         {
+            /*
             SqlConnection constring = new SqlConnection("Data Source=NISAR-LENOVOYOG\\SPARTA;Initial Catalog=demo;Integrated Security=True");
             SqlCommand command = new SqlCommand("select (Type) from crime_type", constring);
             SqlDataReader reader;
@@ -64,6 +66,7 @@ namespace CrimeRecordDB
             {
 
             }
+            */
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -82,7 +85,7 @@ namespace CrimeRecordDB
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {/*
             if (firstnamebox.Text == "" || lastnamebox.Text == "")
             {
                 MessageBox.Show("Please fill the mandatory fields!");
@@ -109,9 +112,45 @@ namespace CrimeRecordDB
                     sqlcmd.Parameters.AddWithValue("@reportedon", dateTimePicker2.Value);
                     sqlcmd.ExecuteNonQuery();
                     MessageBox.Show("Record successfully added!");
-
+                    
                 }
             }
+            */
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void policestationbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); 
         }
     }
 }
