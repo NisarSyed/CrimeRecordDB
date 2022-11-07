@@ -83,9 +83,9 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(472, 237);
+            this.button3.Location = new System.Drawing.Point(454, 237);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(156, 42);
+            this.button3.Size = new System.Drawing.Size(174, 42);
             this.button3.TabIndex = 8;
             this.button3.Text = "View History";
             this.button3.UseVisualStyleBackColor = true;
