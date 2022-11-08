@@ -25,9 +25,9 @@ namespace CrimeRecordDB
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form4 signup = new Form4();
+            Form1 frm = new Form1();
             this.Hide();
-            signup.Show();
+            frm.Show();
             /*
             SqlConnection con = new SqlConnection("Data Source=NISAR-LENOVOYOG\\SPARTA;Initial Catalog=demo;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("select * from Officer where ID = '" + IDtextbox.Text.Trim() + "'", con);
@@ -45,6 +45,16 @@ namespace CrimeRecordDB
             {
                 MessageBox.Show("Invalid ID!");
             }*/
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
