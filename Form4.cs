@@ -152,5 +152,12 @@ namespace CrimeRecordDB
         {
             Application.Exit(); 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form2 backto2 = new Form2();
+            this.Hide();
+            backto2.Show();
+        }
     }
 }

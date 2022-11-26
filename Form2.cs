@@ -47,5 +47,12 @@ namespace CrimeRecordDB
             this.Close();
             view.Show();    
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form1 backto1 = new Form1();
+            this.Close();
+            backto1.Show();
+        }
     }
 }
