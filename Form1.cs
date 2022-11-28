@@ -33,7 +33,7 @@ namespace CrimeRecordDB
         private void button1_Click(object sender, EventArgs e)
         {
             
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecorddbfinal;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecordfinal;Integrated Security=True");
             SqlCommand cmd = new SqlCommand("select * from Portal_credentials where ID = '" + userid.Text + "' and password = '" + password.Text + "'", con);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

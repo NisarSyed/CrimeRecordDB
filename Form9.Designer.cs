@@ -33,19 +33,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.placetb = new System.Windows.Forms.TextBox();
+            this.nametb = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.refreshbutton = new System.Windows.Forms.Button();
+            this.policestationbox2 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -53,9 +54,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(21, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Case Number";
+            this.label1.Text = "Reported On";
             // 
             // comboBox1
             // 
@@ -79,98 +80,86 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(21, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "First Name";
+            this.label3.Text = "Name";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(21, 160);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Last Name";
+            this.label4.Text = "Place";
             // 
-            // textBox1
+            // placetb
             // 
-            this.textBox1.Location = new System.Drawing.Point(160, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 20);
-            this.textBox1.TabIndex = 2;
+            this.placetb.Location = new System.Drawing.Point(158, 157);
+            this.placetb.Name = "placetb";
+            this.placetb.Size = new System.Drawing.Size(156, 20);
+            this.placetb.TabIndex = 2;
+            this.placetb.TextChanged += new System.EventHandler(this.placetb_TextChanged);
             // 
-            // textBox2
+            // nametb
             // 
-            this.textBox2.Location = new System.Drawing.Point(158, 157);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(156, 20);
-            this.textBox2.TabIndex = 2;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(158, 120);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(156, 20);
-            this.textBox3.TabIndex = 2;
+            this.nametb.Location = new System.Drawing.Point(158, 120);
+            this.nametb.Name = "nametb";
+            this.nametb.Size = new System.Drawing.Size(156, 20);
+            this.nametb.TabIndex = 2;
+            this.nametb.TextChanged += new System.EventHandler(this.nametb_TextChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.refreshbutton);
+            this.groupBox1.Controls.Add(this.policestationbox2);
+            this.groupBox1.Controls.Add(this.nametb);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.placetb);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Location = new System.Drawing.Point(23, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 230);
+            this.groupBox1.Size = new System.Drawing.Size(746, 238);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
-            // comboBox2
+            // refreshbutton
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(160, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(154, 21);
-            this.comboBox2.TabIndex = 1;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.refreshbutton.Location = new System.Drawing.Point(331, 190);
+            this.refreshbutton.Name = "refreshbutton";
+            this.refreshbutton.Size = new System.Drawing.Size(75, 23);
+            this.refreshbutton.TabIndex = 3;
+            this.refreshbutton.Text = "Refresh";
+            this.refreshbutton.UseVisualStyleBackColor = true;
+            this.refreshbutton.Click += new System.EventHandler(this.refreshbutton_Click);
             // 
-            // button1
+            // policestationbox2
             // 
-            this.button1.Location = new System.Drawing.Point(331, 190);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.policestationbox2.FormattingEnabled = true;
+            this.policestationbox2.Location = new System.Drawing.Point(160, 36);
+            this.policestationbox2.Name = "policestationbox2";
+            this.policestationbox2.Size = new System.Drawing.Size(154, 21);
+            this.policestationbox2.TabIndex = 1;
+            this.policestationbox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listBox1);
+            this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(23, 287);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(433, 152);
+            this.groupBox2.Size = new System.Drawing.Size(746, 197);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Results";
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(24, 32);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(382, 95);
-            this.listBox1.TabIndex = 0;
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(300, 455);
+            this.button2.Location = new System.Drawing.Point(530, 503);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -180,7 +169,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(390, 455);
+            this.button3.Location = new System.Drawing.Point(623, 503);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
@@ -189,7 +178,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(390, 484);
+            this.button4.Location = new System.Drawing.Point(704, 503);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 5;
@@ -197,11 +186,26 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(728, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(156, 76);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(158, 20);
+            this.dateTimePicker1.TabIndex = 4;
+            // 
             // Form9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 515);
+            this.ClientSize = new System.Drawing.Size(791, 602);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -213,6 +217,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,16 +229,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox placetb;
+        private System.Windows.Forms.TextBox nametb;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox policestationbox2;
+        private System.Windows.Forms.Button refreshbutton;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

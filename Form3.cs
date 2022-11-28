@@ -27,7 +27,7 @@ namespace CrimeRecordDB
         {
          
             
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecorddbfinal;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecordfinal;Integrated Security=True");
             /*
             SqlCommand cmd = new SqlCommand("select * from Officer where ID = '" + IDtextbox.Text.Trim() + "'", con);
             SqlDataAdapter pda = new SqlDataAdapter(cmd);
@@ -45,7 +45,7 @@ namespace CrimeRecordDB
                 MessageBox.Show("Invalid ID!");
             }*/
             con.Open();
-            SqlCommand cmd2 = new SqlCommand("Insert into Victim(ID) values (@victimid) Insert into Portal_credentials(ID,password) values (@victimid,@password)",con);
+            SqlCommand cmd2 = new SqlCommand("Insert into Portal_credentials(ID,password) values (@victimid,@password)",con);
             cmd2.Parameters.AddWithValue("@victimid", Convert.ToInt32(textBox1.Text.Trim()));
             cmd2.Parameters.AddWithValue("@password", textBox3.Text.Trim());
             cmd2.ExecuteNonQuery();
