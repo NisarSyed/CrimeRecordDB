@@ -32,24 +32,29 @@ namespace CrimeRecordDB
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecordfinal;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("select * from Portal_credentials where ID = '" + userid.Text + "' and password = '" + password.Text + "'", con);
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows.Count ==1)
+            try
             {
-                Form2 frm = new Form2();
-                this.Hide();
-                frm.Show();
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecordfinal;Integrated Security=True");
+                SqlCommand cmd = new SqlCommand("select * from Portal_credentials where ID = '" + userid.Text + "' and password = '" + password.Text + "'", con);
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count == 1)
+                {
+                    Form2 frm = new Form2();
+                    this.Hide();
+                    frm.Show();
 
+                }
+                else
+                {
+                    MessageBox.Show("User_name does not exist in our records!");
+                }
+                con.Close();
+            }catch{
+                MessageBox.Show("Password or user ID in incorrect format!");
             }
-            else
-            {
-                MessageBox.Show("User_name does not exist in our records!");
-            }
-            con.Close();
+            
         }
 
         private void registerbutton_Click(object sender, EventArgs e)

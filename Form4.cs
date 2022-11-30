@@ -137,56 +137,63 @@ namespace CrimeRecordDB
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecordfinal;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Insert into FIR(ID,OfficerID,Name,Date,Place,Description,ReportedOn,Crime_type,Resolved_status)values(@id,@officerid,@name,@date,@place,@description,@reportedon,(select ID from crime_type where type = @crimetype) ,@resolvedstatus)",con);
-            cmd.Parameters.AddWithValue("id", Convert.ToInt32(firtb.Text.Trim()));
-            cmd.Parameters.AddWithValue("@officerid", Convert.ToInt32(officertb.Text.Trim()));
-            cmd.Parameters.AddWithValue("@name", victimnametb.Text.Trim());
-            cmd.Parameters.AddWithValue("@date", dateTimePicker1.Value);
-            cmd.Parameters.AddWithValue("@place", placetb.Text.Trim());
-            cmd.Parameters.AddWithValue("@description", richTextBox1.Text);
-            cmd.Parameters.AddWithValue("@reportedon", dateTimePicker2.Value);
-            cmd.Parameters.AddWithValue("crimetype", crimetypebox.Text);
-            cmd.Parameters.AddWithValue("resolvedstatus", 0);
-            cmd.ExecuteNonQuery();
-            foreach (victim b in victimList)
+            try
             {
-                SqlCommand cmd2 = new SqlCommand("Insert into Victim(ID,FIRID,Name,Contact,Address) values (@victimcnic,@firid,@Name,@Contact,@Address)", con);
-                cmd2.Parameters.AddWithValue("@victimcnic",b.ID);
-                cmd2.Parameters.AddWithValue("@firid", Convert.ToInt32(firtb.Text.Trim()));
-                cmd2.Parameters.AddWithValue("@Name",b.Name);
-                cmd2.Parameters.AddWithValue("@Contact",b.Contact);
-                cmd2.Parameters.AddWithValue("@Address", b.address);
-                cmd2.ExecuteNonQuery();
+                SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecordfinal;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Insert into FIR(ID,OfficerID,Name,Date,Place,Description,ReportedOn,Crime_type,Resolved_status)values(@id,@officerid,@name,@date,@place,@description,@reportedon,(select ID from crime_type where type = @crimetype) ,@resolvedstatus)", con);
+                cmd.Parameters.AddWithValue("id", Convert.ToInt32(firtb.Text.Trim()));
+                cmd.Parameters.AddWithValue("@officerid", Convert.ToInt32(officertb.Text.Trim()));
+                cmd.Parameters.AddWithValue("@name", victimnametb.Text.Trim());
+                cmd.Parameters.AddWithValue("@date", dateTimePicker1.Value);
+                cmd.Parameters.AddWithValue("@place", placetb.Text.Trim());
+                cmd.Parameters.AddWithValue("@description", richTextBox1.Text);
+                cmd.Parameters.AddWithValue("@reportedon", dateTimePicker2.Value);
+                cmd.Parameters.AddWithValue("crimetype", crimetypebox.Text);
+                cmd.Parameters.AddWithValue("resolvedstatus", 0);
+                cmd.ExecuteNonQuery();
+                foreach (victim b in victimList)
+                {
+                    SqlCommand cmd2 = new SqlCommand("Insert into Victim(ID,FIRID,Name,Contact,Address) values (@victimcnic,@firid,@Name,@Contact,@Address)", con);
+                    cmd2.Parameters.AddWithValue("@victimcnic", b.ID);
+                    cmd2.Parameters.AddWithValue("@firid", Convert.ToInt32(firtb.Text.Trim()));
+                    cmd2.Parameters.AddWithValue("@Name", b.Name);
+                    cmd2.Parameters.AddWithValue("@Contact", b.Contact);
+                    cmd2.Parameters.AddWithValue("@Address", b.address);
+                    cmd2.ExecuteNonQuery();
+                }
+                foreach (suspect c in suspectList)
+                {
+                    SqlCommand cmd3 = new SqlCommand("Insert into Suspect(ID,Name,Contact,Address,History) values (@id,@name,@contact,@address,@history) Insert into [Suspects/FIR](suspect_ID,FIR_ID) values (@suspectid, @fir_ID)", con);
+                    cmd3.Parameters.AddWithValue("@id", c.ID);
+                    cmd3.Parameters.AddWithValue("@name", c.Name);
+                    cmd3.Parameters.AddWithValue("@contact", c.Contact);
+                    cmd3.Parameters.AddWithValue("@address", c.address);
+                    cmd3.Parameters.AddWithValue("@history", c.history);
+                    cmd3.Parameters.AddWithValue("@suspectid", c.ID);
+                    cmd3.Parameters.AddWithValue("@fir_ID", Convert.ToInt32(firtb.Text.Trim()));
+                    cmd3.ExecuteNonQuery();
+                }
+                foreach (witness d in witnessList)
+                {
+                    SqlCommand cmd4 = new SqlCommand("Insert into Witness(ID,Name,Contact,Address) values (@id,@name,@contact,@address) Insert into [FIR/Witness](FIR_ID,Witness_ID) values (@fir_ID,@witnessid)", con);
+                    cmd4.Parameters.AddWithValue("@id", d.ID);
+                    cmd4.Parameters.AddWithValue("@name", d.Name);
+                    cmd4.Parameters.AddWithValue("@contact", d.Contact);
+                    cmd4.Parameters.AddWithValue("@address", d.address);
+                    cmd4.Parameters.AddWithValue("@witnessid", d.ID);
+                    cmd4.Parameters.AddWithValue("@fir_ID", Convert.ToInt32(firtb.Text.Trim()));
+                    cmd4.ExecuteNonQuery();
+                }
+                con.Close();
+                MessageBox.Show("Your record has been successfully added");
+                this.Close();
             }
-            foreach (suspect c in suspectList)
+            catch
             {
-                SqlCommand cmd3 = new SqlCommand("Insert into Suspect(ID,Name,Contact,Address,History) values (@id,@name,@contact,@address,@history) Insert into [Suspects/FIR](suspect_ID,FIR_ID) values (@suspectid, @fir_ID)", con);
-                cmd3.Parameters.AddWithValue("@id", c.ID);
-                cmd3.Parameters.AddWithValue("@name", c.Name);
-                cmd3.Parameters.AddWithValue("@contact", c.Contact);
-                cmd3.Parameters.AddWithValue("@address", c.address);
-                cmd3.Parameters.AddWithValue("@history", c.history);
-                cmd3.Parameters.AddWithValue("@suspectid", c.ID);
-                cmd3.Parameters.AddWithValue("@fir_ID", Convert.ToInt32(firtb.Text.Trim()));
-                cmd3.ExecuteNonQuery();
+                MessageBox.Show("Incorrect format of entries!");
             }
-            foreach (witness d in witnessList)
-            {
-                SqlCommand cmd4 = new SqlCommand("Insert into Witness(ID,Name,Contact,Address) values (@id,@name,@contact,@address) Insert into [FIR/Witness](FIR_ID,Witness_ID) values (@fir_ID,@witnessid)", con);
-                cmd4.Parameters.AddWithValue("@id", d.ID);
-                cmd4.Parameters.AddWithValue("@name", d.Name);
-                cmd4.Parameters.AddWithValue("@contact", d.Contact);
-                cmd4.Parameters.AddWithValue("@address", d.address);
-                cmd4.Parameters.AddWithValue("@witnessid", d.ID);
-                cmd4.Parameters.AddWithValue("@fir_ID", Convert.ToInt32(firtb.Text.Trim()));
-                cmd4.ExecuteNonQuery();
-            }
-            con.Close();
-            MessageBox.Show("Your record has been successfully added");
-            this.Close();
+            
         }
 
         private void Form4_Load(object sender, EventArgs e)

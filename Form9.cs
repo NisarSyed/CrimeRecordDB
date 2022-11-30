@@ -13,6 +13,7 @@ namespace CrimeRecordDB
 {
     public partial class Form9 : Form
     {
+    
         public Form9()
         {
             InitializeComponent();
@@ -109,6 +110,40 @@ namespace CrimeRecordDB
         private void refreshbutton_Click(object sender, EventArgs e)
         {
             refresh();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ID"].FormattedValue.ToString());
+            Form10 view = new Form10();
+            view.id = id;
+            view.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form6 form6 = new Form6();
+            this.Hide();
+            form6.Show();
+        }
+
+        int firid;
+        public void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            firid = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-79H0MFI\\SQLEXPRESS;Initial Catalog=crimerecordfinal;Integrated Security=True");
+            con.Open();
+            string sql = "delete from case_criminals where firid = @firid delete from Victim where FIRID = @firid delete from [FIR/Witness] where FIR_ID = @firid delete from [Suspects/FIR] where FIR_ID = @firid delete from FIR where ID = @firid";
+            SqlCommand newcmd = new SqlCommand(sql, con);
+            newcmd.Parameters.AddWithValue("firid", firid);
+            newcmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("FIR successfully deleted!");
         }
     }
 }

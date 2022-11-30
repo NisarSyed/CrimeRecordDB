@@ -98,5 +98,12 @@ namespace CrimeRecordDB
             MessageBox.Show("Successfully updated record!");
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 frm2 = new Form2();
+            this.Hide();
+            frm2.Show();
+        }
     }
 }
